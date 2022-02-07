@@ -1,0 +1,134 @@
+<div class="app">
+
+	<div id="home">
+		<div id="top-bar">
+			<h1>Procect Visor</h1>
+		</div>
+		<div id="bound-three" class="scroll-bound">
+			<div class="content">
+			
+				 <video width="600" muted preload>
+				   <source src="StartAni.mov" type="video/webm">
+				<p>Your user agent does not support the HTML5 Video element.</p>
+		  </video>
+			</div>
+	</div>
+	<div id="bound-one" class="scroll-bound">
+		<div class="content">
+			<p>Specifications</p>
+ 			<video width="600" muted preload>
+				<source src="Vani.mp4" type="video/webm">
+				<p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+		</div>
+	</div>
+	
+	<div id="bound-two" class="scroll-bound">
+		<div class="content">
+			<p>Development</p>
+ 			<video width="600" muted preload>
+   			<source src="Ani2.mp4" type="video/mp4">
+    		<p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+		</div>
+	</div>
+	
+	
+	</div>
+	
+</div>
+<style>
+    * { box-sizing: border-box; }
+body {
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 1.4rem;
+}
+
+#top-bar{
+	text-align: center;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 50;
+	color: #ffffffe0;
+	font-size: 1rem;
+	height: 8%;
+	width: 100%;
+	background-color: #141414c4;
+}
+
+#home{
+	height: 99%;
+	width: 100%;
+	background-image: url(BG.gif);
+
+	background-size: 100%;
+}
+#Visor{
+
+}
+
+#bound-one p{
+	width: 100%;
+	background: rgb(252, 252, 252);
+	font-family: sans-serif;
+	font-size: 1.6rem;
+	text-align: center;
+	height: 10%;
+	margin: 0%;
+	top: 0%;
+}
+#bound-one {
+	background: rgb(252, 252, 252);
+}
+#bound-two {
+	background: #ffffff;
+}
+#bound-three {
+	background-image: url(BG.gif);
+	background-size: 100%;
+}
+.scroll-bound {
+	height: 500vh;
+	
+
+}
+.content {
+		height: 100vh;
+		width: 100%;
+		position: sticky;
+		top:0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+    video {
+		width: 80%;
+	}
+
+</style>
+
+<script>
+    const registerVideo = (bound, video) => {
+	bound = document.querySelector(bound);
+	video = document.querySelector(video);
+	const scrollVideo = ()=>{
+		if(video.duration) {
+			const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+			const rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+			const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+			
+			video.currentTime = video.duration * percentScrolled;
+		}
+		requestAnimationFrame(scrollVideo);
+	}
+	requestAnimationFrame(scrollVideo);
+}
+
+
+registerVideo("#bound-one", "#bound-one video");
+
+registerVideo("#bound-two", "#bound-two video")
+
+registerVideo("#bound-three", "#bound-three video")
+</script>
