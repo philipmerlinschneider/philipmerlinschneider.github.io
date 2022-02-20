@@ -1,7 +1,9 @@
 <html>
 <head>
+<title>ProjectVisor Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
 body {
   margin: 0;
   background-color: #ffffff;
@@ -18,7 +20,9 @@ body {
   transition: top 0.3s;
   padding: 0.8%;
 }
-
+#navbar span{
+  float: left;
+}
 
 #navbar a{
     text-decoration: none;
@@ -56,7 +60,8 @@ body {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  font-weight: 100;
+  color: #ffffff;
   display: block;
   transition: 0.3s;
 }
@@ -149,6 +154,14 @@ body {
     margin-top: 5%;
     margin-left: 30%;
 }
+#navbar #Title{
+  position: absolute;
+  left: 35%;
+
+  color: white;
+  width: 30%;
+  text-align: center;
+}
 
 
 </style>
@@ -157,6 +170,7 @@ body {
 
 <div id="navbar">
   <span style="font-size:20 px;cursor:pointer; color: rgb(201, 201, 201);" onclick="openNav()">&#9776; </span>
+  <div id="Title">Project Visor BLOG</div>
 </div>
 
 <div id="mySidenav" class="sidenav">
@@ -182,6 +196,11 @@ body {
     Your browser does not support the video tag.
 </video>
 </div>
+<div>
+  <video id="ImageingUnit" src="ImageingUnit.mp4" width="30%"></video>
+  <img src="HeadlineOne.png" alt="">
+</div>
+
 <div id="bound-one" class="scroll-bound">
     <div class="content">
         <h1>Specifications</h1>
@@ -226,6 +245,10 @@ function scrollFunction() {
     if(hasPlayed == false){
         document.getElementById("myVideo").play();
         hasPlayed=true; 
+    }
+
+    if(document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+      document.getElementById("ImageingUnit").play();
     }
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     document.getElementById("navbar").style.top = "0";
