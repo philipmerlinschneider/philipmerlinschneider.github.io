@@ -1,0 +1,324 @@
+<html>
+<head>
+<title>ProjectVisor Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  margin: 0;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+    z-index: 1;
+  background-color: #333;
+  position: fixed;
+  top: -50px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  padding: 0.8%;
+}
+#navbar span{
+  float: left;
+}
+
+#navbar a{
+    text-decoration: none;
+  text-align: center;
+
+  color: #f2f2f2;
+  left: 50%;
+  padding: 15px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.myVideo{
+    background-image: rgb(0, 0, 0);
+    height: "150%";
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.829);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 100;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#bound-one p{
+	width: 100%;
+	background: rgb(252, 252, 252);
+	font-family: sans-serif;
+	font-size: 1.6rem;
+	text-align: center;
+    padding: 3%;
+}
+#bound-one {
+	background: rgb(252, 252, 252);
+}
+#bound-two {
+	background: #ffffff;
+}
+#bound-three {
+	background: rgb(17, 17, 17);
+}
+.scroll-bound {
+	height: 500vh;
+}
+.content {
+		height: 100vh;
+		width: 100%;
+		position: sticky;
+		top:0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+  .content video {
+		width: 80%;
+	}
+
+    .hide{
+    visibility: hidden;
+    opacity: 0;
+}
+
+#allowCookies{
+    z-index:1;
+    position: fixed;
+    height: 40%;
+    width: 50%;
+    left: 25%;
+    top: 20%;
+    background-color: white;
+    padding: 3%;
+}
+
+#allowCookies #consentCookies{
+    float: left;
+    position: relative;
+    padding: 2%;
+    background-color: black;
+    color:rgb(252, 252, 252);
+    width: 20%;
+    margin-top: 5%;
+}
+#allowCookies #NoconsentCookies{
+    float: left;
+    position: relative;
+    padding: 2%;
+    outline: solid;
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    width: 20%;
+    margin-top: 5%;
+    margin-left: 30%;
+}
+#navbar #Title{
+  position: relative;
+  left: 35%;
+
+  color: white;
+  width: 30%;
+  text-align: center;
+}
+
+#TrackinHeadline{
+    animation: Headline 2s ;
+    text-align: right;
+    position: absolute;
+    right: 5%;
+    top: 30%;
+}
+
+#TrackinHeadline h1{
+  font-size: 9.0em;
+}
+#TrackinHeadline h2{
+  font-size: 3.0em;
+}
+
+@keyframes Headline {
+  0%{color: white;}
+  90%{color: white;}
+  100%{color: black;}
+}
+
+@keyframes blendOut {
+  0%{color: black;}
+  100%{color: white;}
+}
+
+</style>
+</head>
+<body>
+
+<div id="navbar">
+  <span style="font-size:20 px;cursor:pointer; color: rgb(201, 201, 201);" onclick="openNav()">&#9776; </span>
+  <div id="Title">Project Visor BLOG</div>
+</div>
+
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/index.html">Home</a>
+    <a href="/Backgroung.htm">About</a>
+    <a href="#">Visor V1</a>
+    <a href="#">Background</a>
+</div>
+<div id="TrackinHeadline">
+  <h1>Tracking</h1>
+  <h2>the head position</h2> 
+</div>
+<div>
+  <img src="/Tani.gif" alt="" style="width: 100%; ">
+</div>
+<h1>Positioning the Headset in 3D Space</h1>
+<div>
+  <h2>Developing and debugging the tracking software</h2>
+  <p>
+    To track the position of the Headset in 3D space with Orientation and Rotation I've made the VISOR Tracking Software which is written in C++ with OpenCV. 
+    The Software works by calculating the position of 4 Infra Red LEDs and then using that data to calculate the Orientation and Rotation of the headset. This information 
+    can then be used by my Graphics software (based on c++ and OpenGL running on the Headset) to render the 3D objects from the same perspective as your physical eyes. 
+    In my Tracking software first I'm finding out the 2D position of each LED by filtering for Light Color and Brightness, then by using the shift in perspective 
+    I'm calculating the 3D Position of each LED. Then I'm calculating the Averige Plane between these 4 Points and finding the Orientation and Rotation of the Plane.
+  </p>
+  <img src="/TrackingDebug.gif" style="height: 40%;">
+  <img src="/TrackingTest.gif" alt="" style="height: 40%;">
+  <img src="/Data_1.gif" alt="" style="height: 40%;">
+  <img src="/Data_2.gif" alt="" style="height: 40%;">
+</div>
+<h1>Making the Tracking Tool</h1>
+<p> To develop and debug the software I made a Tracking Tool that holds the LEDs in the same spot where they would be on the headset.</p>
+<img src="/MakingTrackingTool.gif" alt="">
+<div>
+  <h1>The Tracking Sensor:</h1>
+  <p>
+    The tracking sensor is based on a stereo image sensor, which I've modified by removing the IR filter from it to enable it to capture light with a wavelength even above 740 nm.
+  </p>
+  <img src="/IMG_1221.JPEG" alt=""  style="height: 40%;">
+  <img src="/IMG_1222.JPEG" alt=""  style="float: left; height: 40%;">
+  <img src="/IMG_1223.JPEG" alt=""  style="float: left; height: 40%;">
+</div>
+ 
+
+
+
+<div id="bound-one" class="scroll-bound">
+  <div class="content">
+      <br>
+      <h1>Build in IR LEDs</h1>
+       <video width="100%" muted="" preload="">
+          <source src="ScrollNew_Trim.mp4" type="video/mp4">
+          <p>Your user agent does not support the HTML5 Video element.</p>
+</video>
+  </div>
+
+</div>
+
+<script>
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+
+var hasPlayed = false;
+
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+window.onscroll = function() {scrollFunction()};
+
+
+
+function scrollFunction() {
+  
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+    document.getElementById("myVideo").play();
+    document.getElementById("myVideo").pause();
+    hasPlayed = false;
+}
+if (document.body.scrollTop < 40 || document.documentElement.scrollTop < 40) {
+  document.getElementById("TrackinHeadline").style.animation = "blendOut 0.5s"
+  
+}
+}
+
+    const registerVideo = (bound, video) => {
+	bound = document.querySelector(bound);
+	video = document.querySelector(video);
+	const scrollVideo = ()=>{
+		if(video.duration) {
+			const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+			const rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+			const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+			
+			video.currentTime = video.duration * percentScrolled;
+		}
+		requestAnimationFrame(scrollVideo);
+	}
+	requestAnimationFrame(scrollVideo);
+}
+
+
+registerVideo("#bound-one", "#bound-one video");
+
+
+
+
+
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+</script>
+
+</body>
+</html>

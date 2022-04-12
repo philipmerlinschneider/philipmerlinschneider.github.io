@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>ProjectVisor Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  margin: 0;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+    z-index: 1;
+  background-color: #333;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  padding: 0.8%;
+}
+#navbar span{
+  float: left;
+}
+
+#navbar a{
+    text-decoration: none;
+  text-align: center;
+
+  color: #f2f2f2;
+  left: 50%;
+  padding: 15px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.829);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 100;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+#navbar #Title{
+  position: relative;
+  left: 35%;
+
+  color: white;
+  width: 30%;
+  text-align: center;
+}
+
+.About{
+    position: absolute;
+    font-size: x-large;
+    left: auto;
+    top: 20%;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="navbar">
+  <span style="font-size:20 px;cursor:pointer; color: rgb(201, 201, 201);" onclick="openNav()">&#9776; </span>
+  <div id="Title">Project Visor BLOG</div>
+</div>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/index.html">Home</a>
+    <a href="/tracking.htm">Tracking</a>
+    <a href="#">Visor V1</a>
+    <a href="#">Background</a>
+</div>
+<h1 style="text-align: center;">Project Background</h1>
+<div class="About">
+    <div style="float: left; ">
+        <h2>About myself:</h2>
+        <p>My name ist Philip Schneider.<br> I've always wanted to own a Holographic Headset <br>simular to the Microsoft Hololense or Magic Leap,<br> since they are fairly expencive I've decided to bulid my<br> own. For the last 2 years I'm now working on 
+            this project.
+        </p>
+    </div>
+    <img src="/Me.gif" alt="" height="30%" style="float: left;">
+</div>
+
+<script>
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+
+var hasPlayed = false;
+
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+window.onscroll = function() {scrollFunction()};
+
+
+
+function scrollFunction() {
+  
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+    document.getElementById("myVideo").play();
+    document.getElementById("myVideo").pause();
+    hasPlayed = false;
+}
+if (document.body.scrollTop < 40 || document.documentElement.scrollTop < 40) {
+  document.getElementById("TrackinHeadline").style.animation = "blendOut 0.5s"
+  
+}
+}
+
+    const registerVideo = (bound, video) => {
+	bound = document.querySelector(bound);
+	video = document.querySelector(video);
+	const scrollVideo = ()=>{
+		if(video.duration) {
+			const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+			const rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+			const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+			
+			video.currentTime = video.duration * percentScrolled;
+		}
+		requestAnimationFrame(scrollVideo);
+	}
+	requestAnimationFrame(scrollVideo);
+}
+
+
+registerVideo("#bound-one", "#bound-one video");
+
+
+
+
+
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+</script>
+
+</body>
+</html>
