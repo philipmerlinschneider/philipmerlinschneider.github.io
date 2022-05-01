@@ -218,11 +218,7 @@ body {
 <div>
   <h2>Developing and debugging the tracking software</h2>
   <p>
-    To track the position of the Headset in 3D space with Orientation and Rotation I've made the VISOR Tracking Software which is written in C++ with OpenCV. 
-    The Software works by calculating the position of 4 Infra Red LEDs and then using that data to calculate the Orientation and Rotation of the headset. This information 
-    can then be used by my Graphics software (based on c++ and OpenGL running on the Headset) to render the 3D objects from the same perspective as your physical eyes. 
-    In my Tracking software first I'm finding out the 2D position of each LED by filtering for Light Color and Brightness, then by using the shift in perspective 
-    I'm calculating the 3D Position of each LED. Then I'm calculating the Averige Plane between these 4 Points and finding the Orientation and Rotation of the Plane.
+  To track the position of the Headset in 3D space with Orientation and Rotation, I've made the VISOR Tracking Software, which is written in C++ with OpenCV. The Software works by calculating the position of 4 Infra Red LEDs and then using that data to calculate the Orientation and Rotation of the headset. This information can then be used by my Graphics software (based on c++ and OpenGL running on the Headset) to render the 3D objects from the same perspective as your physical eyes. In my tracking software, first I'm finding out the 2D position of each LED by filtering for Light Color and Brightness, then by using the shift in perspective I'm calculating the 3D Position of each LED. Then I'm calculating the Average Plane between these 4 Points and finding the Orientation and Rotation of the Plane.
   </p>
   <img src="/TrackingDebug.gif" style="height: 40%;">
   <img src="/TrackingTest.gif" alt="" style="height: 40%;">
